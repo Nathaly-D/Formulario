@@ -1,26 +1,11 @@
 'use srtric';
 import{validateString, vAvg, checkAvg} from './validate.js';
-import{paintCard,addStudent,addProfesor, modalAlert} from './paint.js';
+import{paintCard,addStudent,addProfesor, modalAlert,modalAlert2} from './paint.js';
 
 const btnAgregar = document.getElementById('btnAgregar');
 const btnMostrar = document.getElementById('btnMostrar');
-const opt = document.getElementById('opcion').value;
+const opt = document.getElementById('opcion')
 
-
-opt.onchange = function (){
-    let op = document.getElementById('opcion').value; 
-    if (op === 'profesor'){
-        modalAlert("Los datos han cambiado a profesor")
-        document.getElementById('text1').innerText="Nombre completo:";
-        document.getElementById('text2').innerText="Profesión:";
-        document.getElementById('text3').innerText="Edad:";
-    } else if (op === 'estudiante'){
-        modalAlert("Los datos han cambiado a estudiante")
-        document.getElementById('text1').innerText="Nombres:";
-        document.getElementById('text2').innerText="Apellidos:";
-        document.getElementById('text3').innerText="Promedio:";
-    }
-}
 
 ///////////////////////////////////////
 btnAgregar.onclick = function(){
@@ -60,11 +45,26 @@ btnAgregar.onclick = function(){
         }else{
             modalAlert("Datos Invalidos, revisar los Campos");
         }
+        formulario.reset();
     }   
 }
 
+opt.onchange = function (){
+    let op = document.getElementById('opcion').value; 
+    if (op === 'profesor'){
+        modalAlert("Sección Profesores")
+        document.getElementById('text1').innerText="Nombre completo:";
+        document.getElementById('text2').innerText="Profesión:";
+        document.getElementById('text3').innerText="Edad:";
+    } else if (op === 'estudiante'){
+        modalAlert("Sección Estudiante ")
+        document.getElementById('text1').innerText="Nombres:";
+        document.getElementById('text2').innerText="Apellidos:";
+        document.getElementById('text3').innerText="Promedio:";
+    }
+}
 
-btnMostrar.addEventListener('click', function(){
+btnMostrar.addEventListener("click", function(){
     const op = document.getElementById('opcion').value;
     if (op === 'estudiante'){
         paintCard("ESTUDIANTE");
